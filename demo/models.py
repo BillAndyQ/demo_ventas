@@ -106,12 +106,11 @@ class DetalleVentas(models.Model):
     id_negocio = models.ForeignKey('Negocios', models.DO_NOTHING, db_column='id_negocio', blank=True, null=True)
     id_venta = models.ForeignKey('Venta', models.DO_NOTHING, db_column='id_venta', blank=True, null=True, related_name='detalles')
     nombre_producto = models.TextField(blank=True, null=True)
-    precio_unit = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    precio_unit = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     cantidadxprod = models.IntegerField(db_column='cantidadXprod', blank=True, null=True)  # Field name made lowercase.
-    precio_subtotal = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    precio_subtotal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     
     class Meta:
-        managed = False
         db_table = 'detalle_ventas'
 
 
@@ -230,6 +229,7 @@ class Venta(models.Model):
     id_serie = models.ForeignKey(Serie, models.DO_NOTHING, db_column='id_serie', blank=True, null=True)
     id_negocio = models.ForeignKey(Negocios, models.DO_NOTHING, db_column='id_negocio', blank=True, null=True)
     numero_serie = models.BigIntegerField(blank=True, null=True)
+    total_venta = models.DecimalField(max_digits=65535, decimal_places=2, blank=True, null=True)
 
     class Meta:
         managed = False
