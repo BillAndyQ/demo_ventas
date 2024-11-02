@@ -1,0 +1,7 @@
+pip install sqlalchemy==1.4.54 sqlacodegen
+sqlacodegen mysql+pymysql://root:deikyt2002@host:3306/sys_ventas --outfile models.py
+
+python manage.py inspectdb > models.py
+
+    def __str__(self):
+        return self.nombre or "Sin nombre"
