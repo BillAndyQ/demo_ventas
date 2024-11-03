@@ -82,6 +82,7 @@ class AuthtokenToken(models.Model):
     key = models.CharField(primary_key=True, max_length=40)
     created = models.DateTimeField()
     user = models.OneToOneField(AuthUser, models.DO_NOTHING)
+    id_negocio = models.ForeignKey('Negocios', models.DO_NOTHING, db_column='id_negocio', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -205,6 +206,7 @@ class Serie(models.Model):
     tipo_serie = models.CharField(max_length=20, blank=True, null=True)
     serie = models.CharField(max_length=5, blank=True, null=True)
     id_negocio = models.ForeignKey(Negocios, models.DO_NOTHING, db_column='id_negocio', blank=True, null=True)
+    ultimo_num = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
